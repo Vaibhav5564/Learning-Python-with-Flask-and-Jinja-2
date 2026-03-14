@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-success text-center">
+    {{ msg }}
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+
+<h1 class="mb-4">Update Blog.......</h1>
+<hr>
+
+<form method="POST">
+
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.author.label(class="form-label") }}
+        {{ form.author(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.slug.label(class="form-label") }}
+        {{ form.slug(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.content.label(class="form-label") }}
+        {{ form.content(class="form-control") }}
+    </div>
+
+    <!-- Buttons Row -->
+    <div class="d-flex gap-2">
+
+        {{ form.submit(class="btn btn-primary") }}
+
+</form>
+
+<form action="{{ url_for('deletepost', id=post_to_update.id) }}" method="POST">
+
+        <button class="btn btn-danger"
+                onclick="return confirm('Are you sure to delete this post?')">
+            Delete
+        </button>
+
+</form>
+
+    </div>
+
+</div>
+
+{% endblock %}

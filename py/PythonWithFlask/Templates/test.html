@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-success">
+    {{ msg }}
+</div>
+{% endfor %}
+
+{% if email %}
+
+<h1 class="text-success"> Email :  {{ email }}!!</h1>
+<h1> Password : {{ password }} </h1>
+<h2>I Found This Info:</h2>
+<br><br>
+Name : {{ pw_to_check.name }} 
+<br><br>
+Emaill : {{ pw_to_check.email }}
+<br><br>
+Password (In Hash Form ie Not Readable) : {{ pw_to_check.password_hash }}
+<br><br>
+{% if passed %}
+Password is Correct For {{ email }}
+{% else %}
+Password is Incorrect For {{ email }}
+{% endif %}
+{% else %}
+<h1 class="mb-4">What's Your Email and Password?</h1>
+<hr>
+
+<form method="POST">
+
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", placeholder="abc@xyz.com") }}
+    </div>
+    <div class="mb-3">
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control", placeholder="*******") }}
+    </div>
+              <br>
+        <div class="text-center">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+
+</form>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

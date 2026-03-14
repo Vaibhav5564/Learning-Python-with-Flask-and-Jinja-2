@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Blog Lists</h1>
+
+<hr><br>
+
+{% for post in posts %}
+    <h3 class="posth1">{{ post.title }}</h3>
+    
+    <p>By : {{ post.author }}</p>
+    
+    <p> Date & Time : {{ post.date_posted }}</p>
+    
+    <p> Slug : {{ post.slug }}</p>
+    <br>
+    <p>{{ post.content }}</p>
+    <br>
+
+        <a href="{{ url_for('updatepost', id=post.id) }}" 
+               class="btn btn-warning btn-sm btnSpecific">
+               Update
+            </a>
+            <hr><br>
+    
+
+{% endfor %}
+
+
+
+{% endblock %}

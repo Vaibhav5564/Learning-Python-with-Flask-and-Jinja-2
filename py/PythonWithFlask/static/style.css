@@ -1,0 +1,28 @@
+*{
+       color: white;
+}
+.form-control{
+    border: 1px solid lightcoral !important;
+}
+
+.form-control:focus{
+    border-color: lightcoral !important;
+    box-shadow: none;
+}
+body{
+       background-color: rgb(44, 43, 43);
+}
+h1 {
+       color: red;
+       font-size: 2rem;
+       text-align: center;
+}
+.posth1{
+       color: green;
+}
+.btnSpecific{
+    display: block;
+    margin: auto;
+    width: 10rem;
+    background-color: crimson;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <br>
+        <h1> Hello {{ f }}</h1>
+        <hr>
+        
+    <script src="{{ url_for('static', filename = 'try.js')}}"></script>
+        
+    {% for msg in get_flashed_messages() %}
+        <div class="alert alert-success text-center">
+            {{ msg }}
+        </div>
+    {% endfor %}     
+
+    {% endblock %}

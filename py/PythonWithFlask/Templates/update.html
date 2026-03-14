@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-success">
+    {{ msg }}
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+
+<h1 class="mb-4">Update User.......</h1>
+<hr>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.color.label(class="form-label") }}
+        {{ form.color(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.password_hash2.label(class="form-label") }}
+        {{ form.password_hash2(class="form-control") }}
+    </div>
+
+    <!-- Buttons Row -->
+    <div class="d-flex gap-2">
+
+        <!-- Update Button -->
+         
+        {{ form.submit(class="btn btn-primary") }}
+
+</form>
+        <!-- Delete Button -->
+        <form action="{{ url_for('delete', id=id) }}" method="POST">
+            <button class="btn btn-danger"
+        onclick="return confirm('Are you sure delete this user record?')"> Delete </button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

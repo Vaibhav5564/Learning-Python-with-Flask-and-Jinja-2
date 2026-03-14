@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Hello</h1>
+
+<hr>
+
+<h2>Admin's Favourite Players - </h2>
+
+{% for i in f %}
+    {{ i }} <br>
+{% endfor %}
+
+{% endblock %}
